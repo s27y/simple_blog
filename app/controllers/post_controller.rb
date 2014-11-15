@@ -1,8 +1,14 @@
 class PostController < ApplicationController
   def index
-  	@posts = Post.all
-  	puts @posts.size
+  	if session[:user_id] == nil
+  		@register_flag = true
+  	else
+  		@register_flag = false
+  		@user = User.find(session[:user_id])
+  	end
 
+  	@posts = Post.all
+  	@users = User.all
   end
 
   def new
@@ -13,7 +19,12 @@ class PostController < ApplicationController
   end
 
   def create_post(title, content)
-  	@post = Post.create({:title => @title, :content =>  @content})
+  	if session[:user_id]
+  		@post = Post.create({:title => @title, :content =>  @content, :user_id => session[:user_id]})
+  	else
+  		@post = Post.create({:title => @title, :content =>  @content})
+  	end
+  	
   	if @post.valid?
   		redirect_to action: :index
   	else

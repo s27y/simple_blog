@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  get 'account/create'
+  post 'account/create'
+
+  get 'account/login'
+  post 'account/login'
+
+get 'account/user_detail'
+  get 'account/logout'
+
+  get 'admin/index'
+
+  get 'admin/delete'
+
+  post 'admin/delete'
+
   get 'post/index'
   get 'post/new'
   get 'post/view'

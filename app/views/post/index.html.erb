@@ -1,14 +1,29 @@
 <h1>Post#index</h1>
-<p>Number of <%=h @posts.size %></p>
+
+<% if @register_flag %>
+<%= link_to 'Register', :controller => "account", :action => "create"  %>
+<%= link_to 'Login', :controller => "account", :action => "login"  %>
+<% end %>
+<% if @register_flag == false %>
+<%= link_to 'Logout', :controller => "account", :action => "logout"  %>
+Welcome  <%=h @user.username%>
+<% end %>
 <%= link_to 'New Post', :action => "new"  %>
+
+<p>Number of post <%=h @posts.size %></p>
  <table border="1" style="width:100%">
  <tr>
  	<th>Title</th>
  	<th>Content</th>
+ 	<td>User</td>
 </tr>
 <%  @posts.each do |post| %>
 <tr><td><%=h link_to(post.title, :action => "view", :post_id => post.id) %>  </td>
 	<td><%=h link_to(post.content, :action => "view", :post_id => post.id) %>  </td>
+	<td><% if post.user_id %>
+	<%=h @users.find(post.user_id).username %>
+	<% end %>
+	</td>
 </tr>
 <% end %>
 </table> 
