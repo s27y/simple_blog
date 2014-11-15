@@ -1,7 +1,7 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on rails project, create a very simple blog web app. 
+This is not finished yet
 
 Things you may want to cover:
 
