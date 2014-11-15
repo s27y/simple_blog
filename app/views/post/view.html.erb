@@ -1,0 +1,8 @@
+<h1><%=h @post.title %> </h1>
+<p><%=h @post.content %> </p>
+
+
+<%= link_to 'Edit', :action => "edit", :post_id => @post.id %> 
+<%= link_to 'Delete', :action => "delete", :post_id => @post.id %> 
+<br />
+<%= link_to 'Go Back', :action => "index" %> 
