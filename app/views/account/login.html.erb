@@ -1,0 +1,16 @@
+<h1>Account#login</h1>
+<p>login account</p>
+<%=h @users.size %>
+<% @users.each do |u| %>
+	<%=h u.id %>,<%=h u.username %>, <%=h u.password %>;
+<%end %>
+
+<%= form_tag("login", method: "post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <br/ >
+  <%= label_tag(:q, "Password:") %>
+  <%= text_field_tag :password, '', size: 40 %>
+
+  <%= submit_tag("Login") %>
+<% end %>

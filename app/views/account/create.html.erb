@@ -1,0 +1,22 @@
+<h1>Account#create</h1>
+<p>Create account</p>
+<% if @user && @user.errors.any?  %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_tag("create", method: "post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <br/ >
+  <%= label_tag(:q, "Password:") %>
+  <%= text_field_tag :password, '', size: 40 %>
+
+  <%= submit_tag("Create") %>
+<% end %>

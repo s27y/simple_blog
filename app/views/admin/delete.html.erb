@@ -1,0 +1,8 @@
+<h1>Admin#delete</h1>
+<p>Are you sure you want to delete <%=h @post.title %> </p>
+<p><%=h @post.content %> </p>
+
+<%= form_tag("delete", method: "post") do %>
+	<%= hidden_field_tag :post_id, @post_id %>
+	<%= submit_tag("Delete") %>
+<% end %>
