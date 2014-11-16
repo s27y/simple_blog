@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'account/login'
   post 'account/login'
+  get 'account/launch_login'
 
 get 'account/user_detail'
   get 'account/logout'

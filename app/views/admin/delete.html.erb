@@ -1,8 +1,16 @@
-<h1>Admin#delete</h1>
-<p>Are you sure you want to delete <%=h @post.title %> </p>
+
+<ol class="breadcrumb">
+  <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Admin</a></li>
+  <li class="active">Delete</li>
+</ol>
+
+<div class="alert alert-danger" role="alert">
+<p>Are you sure you want to delete</p> <b><%=h @post.title %></b> 
 <p><%=h @post.content %> </p>
 
 <%= form_tag("delete", method: "post") do %>
 	<%= hidden_field_tag :post_id, @post_id %>
 	<%= submit_tag("Delete") %>
 <% end %>
+</div>

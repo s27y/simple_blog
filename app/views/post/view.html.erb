@@ -1,6 +1,11 @@
-<h1><%=h @post.title %> </h1>
-<p><%=h @post.content %> </p>
+ <ol class="breadcrumb">
+    <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Post</a></li>
+  <li><a href="#">view</a></li>
+  <li class="active"><%=h @post.title %></li>
+</ol>
 
+<p><%=h @post.content %> </p>
 <%= link_to 'Edit', :action => "edit", :post_id => @post.id %> 
 <br />
 <%= link_to 'Go Back', :action => "index" %> 

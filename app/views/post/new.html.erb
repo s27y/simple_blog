@@ -1,3 +1,9 @@
+ <ol class="breadcrumb">
+    <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Post</a></li>
+  <li class="active">New</li>
+</ol>
+
 <% if @post && @post.errors.any?  %>
   <div id="error_explanation">
     <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -9,12 +15,15 @@
     </ul>
   </div>
 <% end %>
-<%= form_tag("new", method: "post") do %>
+<%= form_tag("new", method: "post", role: "form") do %>
+<div class="form-group">
   <%= label_tag(:title, "Post Tile:") %>
   <%= text_field_tag(:title) %>
-  <br/ >
+  </div>
+<div class="form-group">
   <%= label_tag(:q, "Post Content:") %>
   <%= text_field_tag :content, '', size: 75, placeholder: 'Enter post content...' %>
-
-  <%= submit_tag("Post") %>
+  </div>
+  <%= submit_tag "Post", class: "btn btn-default", type: "submit", value: "Submit" %>
 <% end %>
+<%= link_to 'Go Back', :action => "index" %> 

@@ -1,5 +1,9 @@
-<h1>Account#create</h1>
-<p>Create account</p>
+<ol class="breadcrumb">
+  <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Account</a></li>
+  <li class="active">Register</li>
+</ol>
+
 <% if @user && @user.errors.any?  %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -20,3 +24,4 @@
 
   <%= submit_tag("Create") %>
 <% end %>
+<%= link_to 'Go Back', :controller=>"post", :action => "index" %> 

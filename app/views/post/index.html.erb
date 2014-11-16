@@ -1,4 +1,9 @@
-<h1>Post#index</h1>
+
+<ol class="breadcrumb">
+  <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Post</a></li>
+  <li class="active">index</li>
+</ol>
 
 <% if @register_flag %>
 <%= link_to 'Register', :controller => "account", :action => "create"  %>
@@ -6,16 +11,19 @@
 <% end %>
 <% if @register_flag == false %>
 <%= link_to 'Logout', :controller => "account", :action => "logout"  %>
-Welcome  <%=h @user.username%>
+<div style="float: right;"> 
+Welcome  <%=h @user.username%> 
+<%= link_to 'Admin page', :controller => "admin", :action => "index"  %>
+</div>
 <% end %>
 <%= link_to 'New Post', :action => "new"  %>
 
 <p>Number of post <%=h @posts.size %></p>
- <table border="1" style="width:100%">
+ <table style="width:100%" class="table">
  <tr>
  	<th>Title</th>
  	<th>Content</th>
- 	<td>User</td>
+ 	<th>User</th>
 </tr>
 <%  @posts.each do |post| %>
 <tr><td><%=h link_to(post.title, :action => "view", :post_id => post.id) %>  </td>

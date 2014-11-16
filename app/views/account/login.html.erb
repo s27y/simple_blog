@@ -1,16 +1,30 @@
-<h1>Account#login</h1>
-<p>login account</p>
-<%=h @users.size %>
-<% @users.each do |u| %>
-	<%=h u.id %>,<%=h u.username %>, <%=h u.password %>;
-<%end %>
+<ol class="breadcrumb">
+  <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Account</a></li>
+  <li class="active">login</li>
+</ol>
+
+
+<div class="alert alert-info" role="alert">Why login? You can have your name on our front page!</div>
 
 <%= form_tag("login", method: "post") do %>
+<div class="form-group ">
   <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag(:username) %>
-  <br/ >
+  <%= text_field_tag(:username,'', placeholder: "Enter username") %>
+  </div>
+<div class="form-group ">
   <%= label_tag(:q, "Password:") %>
-  <%= text_field_tag :password, '', size: 40 %>
-
+  <%= text_field_tag :password, '', size: 40, type: "password", placeholder:"Password"%>
+</div>
   <%= submit_tag("Login") %>
 <% end %>
+<%= link_to 'Go Back', :controller=>"post", :action => "index" %> 
+
+
+<br />
+List of User(<%=h @users.size %>)
+<ul>
+<% @users.each do |u| %>
+	<li><%=h u.id %>,<%=h u.username %>, <%=h u.password %></li>
+<%end %>
+</ul>

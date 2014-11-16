@@ -15,6 +15,11 @@ class AccountController < ApplicationController
 
   end
 
+  def launch_login
+  	@users = User.all
+  	render :partial => "partial_login"
+  end
+
   def login
   	@users = User.all
   	if request.post?

@@ -1,13 +1,24 @@
-<h1>Admin#index</h1>
-<p>Number of <%=h @posts.size %></p>
- <table border="1" style="width:100%">
+<ol class="breadcrumb">
+  <li><%=h link_to "Home", "/" %></li>
+  <li><a href="#">Admin</a></li>
+  <li class="active">Post</li>
+</ol>
+
+
+<p>Number of post <%=h @posts.size %></p>
+ <table style="width:100%" class="table">
  <tr>
  	<th>Title</th>
  	<th>Content</th>
+ 	<th>User</th>
 </tr>
 <%  @posts.each do |post| %>
 <tr><td><%=h link_to(post.title, :action => "delete", :post_id => post.id) %>  </td>
 	<td><%=h link_to(post.content, :action => "delete", :post_id => post.id) %>  </td>
+	<td><% if post.user_id %>
+	<%=h @users.find(post.user_id).username %>
+	<% end %>
+	</td>
 </tr>
 <% end %>
 </table> 

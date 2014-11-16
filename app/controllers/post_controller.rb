@@ -7,7 +7,7 @@ class PostController < ApplicationController
   		@user = User.find(session[:user_id])
   	end
 
-  	@posts = Post.all
+  	@posts = Post.all.order('created_at desc')
   	@users = User.all
   end
 
